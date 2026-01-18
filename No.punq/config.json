@@ -1,0 +1,11 @@
+{
+    "token": "",
+    "client_secret": "wOKQQ5Zi9jKQxpxcQImEoXJMT097SxRr",
+    "client_id": "1448793638187307092",
+    "redirect_uri": "http://localhost:8000/callback",
+    "owner_id": 1128010717749059584,
+    "maintenance": false,
+    "database_path": "utils/database.json",
+    "support_server_id": 1424434077557067838,
+    "support_channel_id": 1458957636513824906
+}

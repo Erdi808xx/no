@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <!-- Premium Hero Section -->
+    <section class="hero">
+        <div style="margin-bottom: 2rem;">
+            <span
+                style="background: rgba(157, 78, 221, 0.1); color: var(--primary-light); padding: 0.6rem 1.5rem; border-radius: 50px; border: 1px solid var(--primary-glow); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">
+                <i class="fa-solid fa-sparkles"></i> AI Powered Moderation
+            </span>
+        </div>
+
+        <h1>{{ t[lang].hero_title | replace('{highlight}', '<span class="highlight">' + t[lang].hero_highlight +
+                '</span>') | safe }}</h1>
+
+        <p>{{ t[lang].hero_desc }}</p>
+
+        <div style="display: flex; justify-content: center; gap: 1.5rem;">
+            <a href="/login" class="btn btn-primary" style="padding: 1.2rem 3rem; font-size: 1.1rem;">
+                <i class="fa-brands fa-discord" style="font-size: 1.3rem;"></i> {{ t[lang].hero_add }}
+            </a>
+            <a href="#features" class="btn btn-outline" style="padding: 1.2rem 3rem; font-size: 1.1rem;">
+                <i class="fa-solid fa-circle-play"></i> {{ t[lang].hero_features }}
+            </a>
+        </div>
+
+        <!-- Floating Stats Visual -->
+        <div style="margin-top: 6rem; display: flex; justify-content: center; gap: 4rem; opacity: 0.8;">
+            <div style="text-align: center;">
+                <div style="font-size: 2.5rem; font-weight: 900; color: white;">500+</div>
+                <div
+                    style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+                    {{ t[lang].stats_servers }}</div>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 2.5rem; font-weight: 900; color: white;">1M+</div>
+                <div
+                    style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+                    {{ t[lang].stats_spam }}</div>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 2.5rem; font-weight: 900; color: white;">%99.9</div>
+                <div
+                    style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+                    {{ t[lang].stats_uptime }}</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Grid -->
+    <section id="features" style="padding: 8rem 0;">
+        <div style="text-align: center; margin-bottom: 5rem;">
+            <h2 style="font-size: 2.8rem; margin-bottom: 1rem;">Neden <span class="text-gradient">No.punq?</span></h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">En iyi moderatörünüz artık bir insan
+                değil.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div
+                    style="width: 60px; height: 60px; background: rgba(157, 78, 221, 0.1); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
+                    <i class="fa-solid fa-shield-halved" style="font-size: 1.8rem; color: var(--primary);"></i>
+                </div>
+                <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Üstün Koruma</h3>
+                <p style="color: var(--text-muted);">Küfür, reklam ve spam artık sunucunuzun yanına bile yaklaşamaz.
+                    Anlık imha sistemi her şeyi halleder.</p>
+            </div>
+
+            <div class="card">
+                <div
+                    style="width: 60px; height: 60px; background: rgba(0, 212, 255, 0.1); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
+                    <i class="fa-solid fa-gauge-high" style="font-size: 1.8rem; color: var(--secondary);"></i>
+                </div>
+                <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Yüksek Performans</h3>
+                <p style="color: var(--text-muted);">Milisaniyeler içinde tepki süresi. Sunucunuzda binlerce mesaj
+                    akarken bot her zaman uyanık kalır.</p>
+            </div>
+
+            <div class="card">
+                <div
+                    style="width: 60px; height: 60px; background: rgba(255, 255, 255, 0.05); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
+                    <i class="fa-solid fa-layer-group" style="font-size: 1.8rem; color: white;"></i>
+                </div>
+                <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Modüler Yapı</h3>
+                <p style="color: var(--text-muted);">İstediğiniz özelliği tek tıkla açın veya kapatın. Panel üzerinden
+                    her şeyi özelleştirmek sizin elinizde.</p>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

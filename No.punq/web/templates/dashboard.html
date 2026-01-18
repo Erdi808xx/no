@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}Kontrol Paneli | No.punq{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- User Welcome Header -->
+    <header class="card"
+        style="margin-bottom: 4rem; padding: 2.5rem 3.5rem; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, rgba(13, 13, 20, 0.8), rgba(90, 24, 154, 0.1));">
+        <div style="display: flex; align-items: center; gap: 2.5rem;">
+            <div style="position: relative;">
+                <img src="https://cdn.discordapp.com/avatars/{{ user_data.id }}/{{ user_data.avatar }}.png"
+                    class="logo-icon"
+                    style="width: 90px; height: 90px; border-radius: 25px; border: 3px solid var(--primary);"
+                    alt="User">
+                <div
+                    style="position: absolute; bottom: 0; right: 0; width: 22px; height: 22px; background: #22c55e; border: 4px solid #0d0d14; border-radius: 50%;">
+                </div>
+            </div>
+            <div>
+                <h1 style="font-size: 2.2rem; margin-bottom: 0.2rem;">{{ t[lang].dash_welcome }}, <span
+                        class="text-gradient">{{ user_data.username }}</span></h1>
+                <p style="color: var(--text-muted); font-weight: 500;">{{ t[lang].dash_subtitle }}</p>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div id="live-clock"
+                style="font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 700; color: white; text-shadow: 0 0 10px var(--primary-glow);">
+                00:00:00</div>
+            <div class="status-floating" style="margin-top: 5px; opacity: 0.8; font-size: 0.9rem;">
+                <i class="fa-solid fa-server"></i> {{ guilds|length }} {{ t[lang].dash_manageable }}
+            </div>
+        </div>
+    </header>
+
+    <!-- Server Search & Filter (Visual Only) -->
+    <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding: 0 1rem;">
+        <h2 style="font-size: 1.6rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted);">{{
+            t[lang].dash_your_servers }}</h2>
+        <div style="display: flex; gap: 1rem;">
+            <div
+                style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-glass); padding: 0.6rem 1.2rem; border-radius: 12px; font-size: 0.85rem; color: var(--text-muted);">
+                <i class="fa-solid fa-magnifying-glass"></i> {{ t[lang].dash_search }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Server Grid -->
+    <div class="server-grid">
+        {% for guild in guilds %}
+        <div class="card server-card" style="background: rgba(10, 10, 15, 0.5); padding: 2.5rem 2rem;">
+            <div class="server-icon-wrapper">
+                {% if guild.icon %}
+                <img src="https://cdn.discordapp.com/icons/{{ guild.id }}/{{ guild.icon }}.png" class="server-icon"
+                    alt="{{ guild.name }}">
+                {% else %}
+                <div class="server-icon"
+                    style="background: linear-gradient(135deg, var(--accent), var(--primary)); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 900; color: white;">
+                    {{ guild.name[0] }}</div>
+                {% endif %}
+
+                <div class="presence-dot {% if guild.bot_in %}online{% else %}offline{% endif %}"></div>
+            </div>
+
+            <h3
+                style="font-size: 1.35rem; margin-bottom: 0.5rem; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                {{ guild.name }}</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem;">
+                {% if guild.bot_in %}
+                <span style="color: var(--success); font-weight: 700;">{{ t[lang].dash_active }}</span> | {{
+                t[lang].dash_connected }}
+                {% else %}
+                <span style="color: var(--text-muted);">{{ t[lang].dash_passive }}</span> | {{ t[lang].dash_not_added }}
+                {% endif %}
+            </p>
+
+            <div style="width: 100%; display: flex; gap: 10px;">
+                {% if guild.bot_in %}
+                <a href="/dashboard/{{ guild.id }}" class="btn btn-primary" style="flex: 1; padding: 0.9rem;">
+                    <i class="fa-solid fa-sliders"></i> {{ t[lang].dash_btn_panel }}
+                </a>
+                {% else %}
+                <a href="https://discord.com/api/oauth2/authorize?client_id={{ client_id }}&permissions=8&scope=bot%20applications.commands&guild_id={{ guild.id }}"
+                    class="btn btn-outline"
+                    style="flex: 1; padding: 0.9rem; border-color: var(--primary-glow); background: rgba(157, 78, 221, 0.05); color: var(--primary-light);">
+                    <i class="fa-solid fa-plus"></i> {{ t[lang].dash_btn_add }}
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    /* Inline adjustment for server card animations */
+    .server-card {
+        transition: all 0.5s var(--transition);
+    }
+
+    .server-card:hover {
+        background: rgba(157, 78, 221, 0.03) !important;
+        box-shadow: 0 30px 60px -20px rgba(157, 78, 221, 0.2);
+    }
+</style>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        const clock = document.getElementById('live-clock');
+        if (clock) {
+            clock.innerText = now.toLocaleTimeString('tr-TR', { hour12: false });
+        }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+</script>
+{% endblock %}

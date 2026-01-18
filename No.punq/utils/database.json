@@ -1,0 +1,627 @@
+{
+    "1424434077557067838": {
+        "moderation": {
+            "enabled": true,
+            "bad_words": [],
+            "whitelist_links": [],
+            "log_channel": 1459326306964471879,
+            "spam_protection": true,
+            "link_protection": true,
+            "scan_admins": true
+        },
+        "social": {
+            "youtube": [
+                {
+                    "name": "kyraelpm",
+                    "id": "UCSAzyZ9qPxbx1M3iniWtquQ",
+                    "last_video": "Eildl2KZ5xQ"
+                },
+                {
+                    "id": "https://www.youtube.com/@kyraelpm",
+                    "name": "https://www.youtube.com/@kyraelpm",
+                    "last_video": null,
+                    "last_stream": null
+                }
+            ],
+            "tiktok": [
+                {
+                    "id": "kyraelpm",
+                    "name": "kyraelpm",
+                    "last_video": null,
+                    "last_stream": null
+                }
+            ],
+            "kick": [
+                {
+                    "id": "kyraelpm",
+                    "name": "kyraelpm",
+                    "last_video": null,
+                    "last_stream": null
+                }
+            ],
+            "instagram": [],
+            "notification_channel": 1458193471209734210
+        },
+        "users": {
+            "907050404574015548": {
+                "warns": [
+                    {
+                        "reason": "Yasaklı Kelime / Küfür",
+                        "timestamp": "2026-01-17 21:49:00"
+                    },
+                    {
+                        "reason": "Reklam / Yasaklı Link",
+                        "timestamp": "2026-01-17 21:49:09"
+                    }
+                ]
+            }
+        },
+        "greeting": {
+            "enabled": true,
+            "channel_id": 1458193493183823987,
+            "morning_msg": "Günaydın! ☀️",
+            "evening_msg": "İyi Akşamlar! 🌙",
+            "morning_hour": 10,
+            "morning_minute": 0,
+            "evening_hour": 22,
+            "evening_minute": 0
+        },
+        "welcome": {
+            "enabled": true,
+            "channel_id": 1458193472640122912,
+            "rules_channel_id": 1458193469662167203,
+            "message": "Hoş geldin {user}! Seninle birlikte {count} kişiyiz. Hedefimiz {target} üye! ✨",
+            "leave_enabled": true,
+            "leave_message": "Güle güle {user}! Senden sonra {count} kişi kaldık. 😢",
+            "member_target": 50
+        },
+        "auto_role": {
+            "enabled": true,
+            "role_id": 1458193456542515222
+        },
+        "feature_channel": {
+            "enabled": true,
+            "channel_id": 1461058327868997886
+        }
+    },
+    "1449166013554753540": {
+        "moderation": {
+            "enabled": true,
+            "bad_words": [],
+            "whitelist_links": [],
+            "log_channel": 1454842298595803201,
+            "spam_protection": true,
+            "link_protection": true,
+            "bypass_admins": true,
+            "scan_admins": true
+        },
+        "social": {
+            "youtube": [],
+            "tiktok": [],
+            "kick": [],
+            "instagram": [],
+            "notification_channel": null
+        },
+        "users": {
+            "907050404574015548": {
+                "warns": [
+                    {
+                        "reason": "Yasaklı Kelime Kullanımı",
+                        "timestamp": "N/A"
+                    },
+                    {
+                        "reason": "Spam / Flood",
+                        "timestamp": "N/A"
+                    },
+                    {
+                        "reason": "Spam / Flood",
+                        "timestamp": "N/A"
+                    },
+                    {
+                        "reason": "Yasaklı Kelime Kullanımı",
+                        "timestamp": "N/A"
+                    },
+                    {
+                        "reason": "Yasaklı Kelime Kullanımı",
+                        "timestamp": "N/A"
+                    },
+                    {
+                        "reason": "Yasaklı Kelime Kullanımı",
+                        "timestamp": "N/A"
+                    }
+                ]
+            },
+            "1241092797004648670": {
+                "warns": [
+                    {
+                        "reason": "Reklam / Yasaklı Link",
+                        "timestamp": "N/A"
+                    },
+                    {
+                        "reason": "Yasaklı Kelime / Küfür",
+                        "timestamp": "N/A"
+                    }
+                ]
+            },
+            "1128010717749059584": {
+                "warns": [
+                    {
+                        "reason": "Yasaklı Kelime / Küfür",
+                        "timestamp": "N/A"
+                    },
+                    {
+                        "reason": "Yasaklı Kelime / Küfür",
+                        "timestamp": "N/A"
+                    },
+                    {
+                        "reason": "Yasaklı Kelime / Küfür",
+                        "timestamp": "N/A"
+                    },
+                    {
+                        "reason": "Reklam / Yasaklı Link",
+                        "timestamp": "N/A"
+                    },
+                    {
+                        "reason": "Yasaklı Kelime / Küfür",
+                        "timestamp": "N/A"
+                    }
+                ]
+            }
+        },
+        "greeting": {
+            "enabled": false,
+            "channel_id": null,
+            "morning_msg": "Günaydın! ☀️",
+            "evening_msg": "İyi Akşamlar! 🌙",
+            "morning_hour": 10,
+            "morning_minute": 0,
+            "evening_hour": 22,
+            "evening_minute": 0
+        },
+        "welcome": {
+            "enabled": false,
+            "channel_id": null,
+            "rules_channel_id": null,
+            "message": "Hoş geldin {user}! Seninle birlikte {count} kişiyiz. Hedefimiz {target} üye! ✨",
+            "leave_enabled": false,
+            "leave_message": "Güle güle {user}! Senden sonra {count} kişi kaldık. 😢",
+            "member_target": 100
+        },
+        "auto_role": {
+            "enabled": false,
+            "role_id": null
+        },
+        "feature_channel": {
+            "enabled": false,
+            "channel_id": null
+        }
+    },
+    "1455641685475328182": {
+        "moderation": {
+            "enabled": true,
+            "bad_words": [],
+            "whitelist_links": [],
+            "log_channel": 1456748818178638026,
+            "spam_protection": true,
+            "link_protection": true,
+            "scan_admins": true
+        },
+        "social": {
+            "youtube": [],
+            "tiktok": [],
+            "kick": [],
+            "instagram": [],
+            "notification_channel": null
+        },
+        "users": {},
+        "greeting": {
+            "enabled": true,
+            "channel_id": 1456748818178638026,
+            "morning_msg": "Günaydın! ☀️",
+            "evening_msg": "İyi Akşamlar! 🌙",
+            "morning_hour": 12,
+            "morning_minute": 13,
+            "evening_hour": 22,
+            "evening_minute": 0
+        },
+        "welcome": {
+            "enabled": true,
+            "channel_id": 1456748818178638026,
+            "rules_channel_id": 1456748818178638026,
+            "message": "Hoş geldin {user}! Seninle birlikte {count} kişiyiz. Hedefimiz {target} üye! ✨",
+            "leave_enabled": true,
+            "leave_message": "Güle güle {user}! Senden sonra {count} kişi kaldık. 😢",
+            "member_target": 100
+        },
+        "auto_role": {
+            "enabled": true,
+            "role_id": 1456748818178638026
+        },
+        "feature_channel": {
+            "enabled": false,
+            "channel_id": null
+        }
+    },
+    "1455321810865360936": {
+        "moderation": {
+            "enabled": true,
+            "bad_words": [],
+            "whitelist_links": [],
+            "log_channel": 1456748818178638026,
+            "spam_protection": true,
+            "link_protection": true,
+            "bypass_admins": true,
+            "scan_admins": true
+        },
+        "social": {
+            "youtube": [],
+            "tiktok": [],
+            "kick": [],
+            "instagram": [],
+            "notification_channel": null
+        },
+        "users": {},
+        "greeting": {
+            "enabled": false,
+            "channel_id": null,
+            "morning_msg": "Günaydın! ☀️",
+            "evening_msg": "İyi Akşamlar! 🌙",
+            "morning_hour": 10,
+            "morning_minute": 0,
+            "evening_hour": 22,
+            "evening_minute": 0
+        },
+        "welcome": {
+            "enabled": false,
+            "channel_id": null,
+            "rules_channel_id": null,
+            "message": "Hoş geldin {user}! Seninle birlikte {count} kişiyiz. Hedefimiz {target} üye! ✨",
+            "leave_enabled": false,
+            "leave_message": "Güle güle {user}! Senden sonra {count} kişi kaldık. 😢",
+            "member_target": 100
+        },
+        "auto_role": {
+            "enabled": false,
+            "role_id": null
+        },
+        "feature_channel": {
+            "enabled": false,
+            "channel_id": null
+        }
+    },
+    "1279482274748043438": {
+        "moderation": {
+            "enabled": false,
+            "bad_words": [],
+            "whitelist_links": [],
+            "log_channel": null,
+            "spam_protection": false,
+            "link_protection": false,
+            "scan_admins": false
+        },
+        "social": {
+            "youtube": [],
+            "tiktok": [],
+            "kick": [],
+            "instagram": [],
+            "notification_channel": null
+        },
+        "greeting": {
+            "enabled": false,
+            "channel_id": null,
+            "morning_msg": "Günaydın! ☀️",
+            "evening_msg": "İyi Akşamlar! 🌙",
+            "morning_hour": 10,
+            "morning_minute": 0,
+            "evening_hour": 22,
+            "evening_minute": 0
+        },
+        "users": {},
+        "welcome": {
+            "enabled": false,
+            "channel_id": null,
+            "rules_channel_id": null,
+            "message": "Hoş geldin {user}! Seninle birlikte {count} kişiyiz. Hedefimiz {target} üye! ✨",
+            "leave_enabled": false,
+            "leave_message": "Güle güle {user}! Senden sonra {count} kişi kaldık. 😢",
+            "member_target": 100
+        },
+        "auto_role": {
+            "enabled": false,
+            "role_id": null
+        },
+        "feature_channel": {
+            "enabled": false,
+            "channel_id": null
+        }
+    },
+    "1460420437178581059": {
+        "moderation": {
+            "enabled": false,
+            "bad_words": [],
+            "whitelist_links": [],
+            "log_channel": null,
+            "spam_protection": false,
+            "link_protection": false,
+            "scan_admins": false
+        },
+        "social": {
+            "youtube": [],
+            "tiktok": [],
+            "kick": [],
+            "instagram": [],
+            "notification_channel": null
+        },
+        "greeting": {
+            "enabled": false,
+            "channel_id": null,
+            "morning_msg": "Günaydın! ☀️",
+            "evening_msg": "İyi Akşamlar! 🌙",
+            "morning_hour": 10,
+            "morning_minute": 0,
+            "evening_hour": 22,
+            "evening_minute": 0
+        },
+        "welcome": {
+            "enabled": false,
+            "channel_id": null,
+            "rules_channel_id": null,
+            "message": "Hoş geldin {user}! Seninle birlikte {count} kişiyiz. Hedefimiz {target} üye! ✨",
+            "leave_enabled": false,
+            "leave_message": "Güle güle {user}! Senden sonra {count} kişi kaldık. 😢",
+            "member_target": 100
+        },
+        "auto_role": {
+            "enabled": false,
+            "role_id": null
+        },
+        "users": {},
+        "feature_channel": {
+            "enabled": true,
+            "channel_id": 1460998172024246405
+        }
+    },
+    "1460999691373121599": {
+        "moderation": {
+            "enabled": false,
+            "bad_words": [],
+            "whitelist_links": [],
+            "log_channel": null,
+            "spam_protection": false,
+            "link_protection": false,
+            "scan_admins": false
+        },
+        "social": {
+            "youtube": [],
+            "tiktok": [],
+            "kick": [],
+            "instagram": [],
+            "notification_channel": null
+        },
+        "greeting": {
+            "enabled": false,
+            "channel_id": null,
+            "morning_msg": "Günaydın! ☀️",
+            "evening_msg": "İyi Akşamlar! 🌙",
+            "morning_hour": 10,
+            "morning_minute": 0,
+            "evening_hour": 22,
+            "evening_minute": 0
+        },
+        "welcome": {
+            "enabled": false,
+            "channel_id": null,
+            "rules_channel_id": null,
+            "message": "Hoş geldin {user}! Seninle birlikte {count} kişiyiz. Hedefimiz {target} üye! ✨",
+            "leave_enabled": false,
+            "leave_message": "Güle güle {user}! Senden sonra {count} kişi kaldık. 😢",
+            "member_target": 100
+        },
+        "auto_role": {
+            "enabled": false,
+            "role_id": null
+        },
+        "feature_channel": {
+            "enabled": true,
+            "channel_id": 1460999750466670679
+        },
+        "users": {}
+    },
+    "1461000679387697207": {
+        "moderation": {
+            "enabled": false,
+            "bad_words": [],
+            "whitelist_links": [],
+            "log_channel": null,
+            "spam_protection": false,
+            "link_protection": false,
+            "scan_admins": false
+        },
+        "social": {
+            "youtube": [],
+            "tiktok": [],
+            "kick": [],
+            "instagram": [],
+            "notification_channel": null
+        },
+        "greeting": {
+            "enabled": false,
+            "channel_id": null,
+            "morning_msg": "Günaydın! ☀️",
+            "evening_msg": "İyi Akşamlar! 🌙",
+            "morning_hour": 10,
+            "morning_minute": 0,
+            "evening_hour": 22,
+            "evening_minute": 0
+        },
+        "welcome": {
+            "enabled": false,
+            "channel_id": null,
+            "rules_channel_id": null,
+            "message": "Hoş geldin {user}! Seninle birlikte {count} kişiyiz. Hedefimiz {target} üye! ✨",
+            "leave_enabled": false,
+            "leave_message": "Güle güle {user}! Senden sonra {count} kişi kaldık. 😢",
+            "member_target": 100
+        },
+        "auto_role": {
+            "enabled": false,
+            "role_id": null
+        },
+        "feature_channel": {
+            "enabled": true,
+            "channel_id": 1461001026659160258
+        },
+        "users": {}
+    },
+    "1461002638593364013": {
+        "moderation": {
+            "enabled": false,
+            "bad_words": [],
+            "whitelist_links": [],
+            "log_channel": null,
+            "spam_protection": false,
+            "link_protection": false,
+            "scan_admins": false
+        },
+        "social": {
+            "youtube": [],
+            "tiktok": [],
+            "kick": [],
+            "instagram": [],
+            "notification_channel": null
+        },
+        "greeting": {
+            "enabled": false,
+            "channel_id": null,
+            "morning_msg": "Günaydın! ☀️",
+            "evening_msg": "İyi Akşamlar! 🌙",
+            "morning_hour": 10,
+            "morning_minute": 0,
+            "evening_hour": 22,
+            "evening_minute": 0
+        },
+        "welcome": {
+            "enabled": false,
+            "channel_id": null,
+            "rules_channel_id": null,
+            "message": "Hoş geldin {user}! Seninle birlikte {count} kişiyiz. Hedefimiz {target} üye! ✨",
+            "leave_enabled": false,
+            "leave_message": "Güle güle {user}! Senden sonra {count} kişi kaldık. 😢",
+            "member_target": 100
+        },
+        "auto_role": {
+            "enabled": false,
+            "role_id": null
+        },
+        "feature_channel": {
+            "enabled": true,
+            "channel_id": 1461002882424901714
+        },
+        "users": {}
+    },
+    "1461053048444158240": {
+        "moderation": {
+            "enabled": true,
+            "bad_words": [],
+            "whitelist_links": [],
+            "log_channel": 1461053049278566477,
+            "spam_protection": true,
+            "link_protection": true,
+            "scan_admins": true
+        },
+        "social": {
+            "youtube": [],
+            "tiktok": [],
+            "kick": [],
+            "instagram": [],
+            "notification_channel": null
+        },
+        "greeting": {
+            "enabled": false,
+            "channel_id": null,
+            "morning_msg": "Günaydın! ☀️",
+            "evening_msg": "İyi Akşamlar! 🌙",
+            "morning_hour": 10,
+            "morning_minute": 0,
+            "evening_hour": 22,
+            "evening_minute": 0
+        },
+        "welcome": {
+            "enabled": false,
+            "channel_id": null,
+            "rules_channel_id": null,
+            "message": "Hoş geldin {user}! Seninle birlikte {count} kişiyiz. Hedefimiz {target} üye! ✨",
+            "leave_enabled": false,
+            "leave_message": "Güle güle {user}! Senden sonra {count} kişi kaldık. 😢",
+            "member_target": 100
+        },
+        "auto_role": {
+            "enabled": false,
+            "role_id": null
+        },
+        "feature_channel": {
+            "enabled": true,
+            "channel_id": 1461053441047793808
+        },
+        "users": {
+            "907050404574015548": {
+                "warns": [
+                    {
+                        "reason": "Reklam / Yasaklı Link",
+                        "timestamp": "2026-01-14 18:11:34"
+                    },
+                    {
+                        "reason": "Yasaklı Kelime / Küfür",
+                        "timestamp": "2026-01-14 18:11:53"
+                    }
+                ]
+            }
+        }
+    },
+    "1461068127637864667": {
+        "moderation": {
+            "enabled": false,
+            "bad_words": [],
+            "whitelist_links": [],
+            "log_channel": null,
+            "spam_protection": false,
+            "link_protection": false,
+            "scan_admins": false
+        },
+        "social": {
+            "youtube": [],
+            "tiktok": [],
+            "kick": [],
+            "instagram": [],
+            "notification_channel": null
+        },
+        "greeting": {
+            "enabled": false,
+            "channel_id": null,
+            "morning_msg": "Günaydın! ☀️",
+            "evening_msg": "İyi Akşamlar! 🌙",
+            "morning_hour": 10,
+            "morning_minute": 0,
+            "evening_hour": 22,
+            "evening_minute": 0
+        },
+        "welcome": {
+            "enabled": false,
+            "channel_id": null,
+            "rules_channel_id": null,
+            "message": "Hoş geldin {user}! Seninle birlikte {count} kişiyiz. Hedefimiz {target} üye! ✨",
+            "leave_enabled": false,
+            "leave_message": "Güle güle {user}! Senden sonra {count} kişi kaldık. 😢",
+            "member_target": 100
+        },
+        "auto_role": {
+            "enabled": false,
+            "role_id": null
+        },
+        "feature_channel": {
+            "enabled": true,
+            "channel_id": 1461068446564356119
+        },
+        "users": {}
+    }
+}

@@ -1,0 +1,593 @@
+{% extends "base.html" %}
+
+{% block title %}Yönet: {{ guild.name }} | No.punq{% endblock %}
+
+{% block content %}
+<div class="container animate-fade-in" style="padding-top: 3rem;">
+    <div class="panel-layout">
+
+        <!-- Navigasyon Sidebar -->
+        <aside class="sidebar">
+            <div style="text-align: center; margin-bottom: 2.5rem;">
+                <div style="position: relative; display: inline-block;">
+                    {% if guild.icon %}
+                    <img src="https://cdn.discordapp.com/icons/{{ guild.id }}/{{ guild.icon }}.png"
+                        style="width: 80px; height: 80px; border-radius: 24px; border: 2px solid var(--primary); margin-bottom: 1rem; box-shadow: 0 10px 30px var(--primary-glow);"
+                        alt="Guild">
+                    {% else %}
+                    <div
+                        style="width: 80px; height: 80px; border-radius: 24px; background: linear-gradient(135deg, var(--accent), var(--primary)); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 900; color: white;">
+                        {{ guild.name[0] }}</div>
+                    {% endif %}
+                </div>
+                <h2
+                    style="font-size: 1.2rem; margin-bottom: 0.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    {{ guild.name }}</h2>
+                <div
+                    style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px;">
+                    Sistem Kontrol Paneli</div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#moderasyon" class="sidebar-item active"><i class="fa-solid fa-shield-halved"></i>
+                    <span>Güvenlik</span></a>
+                <a href="#welcome" class="sidebar-item"><i class="fa-solid fa-door-open"></i>
+                    <span>Giriş/Karşılama</span></a>
+                <a href="#oto-mesaj" class="sidebar-item"><i class="fa-solid fa-clock"></i> <span>Periyodik
+                        Mesajlar</span></a>
+                <a href="#auto-role" class="sidebar-item"><i class="fa-solid fa-user-tag"></i> <span>Otomatik
+                        Rol</span></a>
+                <a href="#sosyal" class="sidebar-item"><i class="fa-solid fa-tower-broadcast"></i> <span>Sosyal
+                        Radar</span></a>
+                <a href="#komutlar" class="sidebar-item"><i class="fa-solid fa-terminal"></i> <span>Komut
+                        Listesi</span></a>
+
+                <div style="height: 1px; background: var(--glass-border); margin: 1.5rem 0;"></div>
+
+                <a href="/dashboard" class="sidebar-item" style="color: var(--danger);"><i
+                        class="fa-solid fa-chevron-left"></i> <span>Geri Dön</span></a>
+            </nav>
+        </aside>
+
+        <!-- Ana Ayar Alanı -->
+        <main class="form-section">
+
+            <!-- MODERASYON ÜST SEVİYE GÜVENLİK -->
+            <section id="moderasyon" class="card">
+                <header
+                    style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3rem;">
+                    <div>
+                        <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-virus"
+                                style="color: var(--primary); margin-right: 12px;"></i> Güvenlik Motoru</h2>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Sunucunuzun tüm filtreleme ve koruma
+                            sistemlerini buradan yönetin.</p>
+                    </div>
+                    <div class="status-badge">AKTİF</div>
+                </header>
+
+                <form action="/dashboard/{{ guild.id }}/moderation" method="POST">
+                    <div class="settings-grid">
+                        <div class="control-field">
+                            <label class="label-premium">Sistem Durumu</label>
+                            <div class="switch-card" onclick="this.querySelector('input').click()">
+                                <span>Koruma Kalkanı</span>
+                                <input type="checkbox" name="enabled" {% if config.moderation.enabled %}checked{% endif
+                                    %}>
+                            </div>
+                        </div>
+                        <div class="control-field">
+                            <label class="label-premium">Log Kanalı</label>
+                            <input type="text" name="log_channel" class="input-cyber"
+                                value="{{ config.moderation.log_channel or '' }}" placeholder="Kanal ID">
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2.5rem;">
+                        <label class="label-premium">Gelişmis Filtreleme</label>
+                        <div class="settings-grid">
+                            <div class="switch-card" onclick="this.querySelector('input').click()">
+                                <span>Link Koruması</span>
+                                <input type="checkbox" name="link_protection" {% if config.moderation.link_protection
+                                    %}checked{% endif %}>
+                            </div>
+                            <div class="switch-card" onclick="this.querySelector('input').click()">
+                                <span>Spam Koruması</span>
+                                <input type="checkbox" name="spam_protection" {% if config.moderation.spam_protection
+                                    %}checked{% endif %}>
+                            </div>
+                            <div class="switch-card" onclick="this.querySelector('input').click()">
+                                <span>Admin Tarama</span>
+                                <input type="checkbox" name="scan_admins" {% if config.moderation.scan_admins
+                                    %}checked{% endif %}>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-field" style="margin-top: 2.5rem;">
+                        <label class="label-premium">Yasaklı Kelimeler</label>
+                        <textarea name="bad_words" class="input-cyber" style="min-height: 120px; resize: vertical;"
+                            placeholder="Kelime1, Kelime2, Kelime3...">{{ config.moderation.bad_words|join(', ') }}</textarea>
+                    </div>
+
+                    <div style="margin-top: 3.5rem;">
+                        <button type="submit" class="btn btn-primary"
+                            style="width: 100%; height: 60px; font-size: 1.1rem; border-radius: 20px;">
+                            <i class="fa-solid fa-floppy-disk"></i> Güvenlik Ayarlarını Uygula
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- GİRİŞ VE KARŞILAMA SİSTEMİ -->
+            <section id="welcome" class="card">
+                <header style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-door-open"
+                            style="color: var(--success); margin-right: 12px;"></i> Karşılama Sistemi</h2>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Yeni üyeler sunucunuza katıldığında veya
+                        ayrıldığında otomatik mesajlar gönderin.</p>
+                </header>
+
+                <form action="/dashboard/{{ guild.id }}/welcome" method="POST">
+                    <div class="settings-grid">
+                        <div class="switch-card" onclick="this.querySelector('input').click()">
+                            <span>Giriş Mesajları</span>
+                            <input type="checkbox" name="enabled" {% if config.welcome.enabled %}checked{% endif %}>
+                        </div>
+                        <div class="switch-card" onclick="this.querySelector('input').click()">
+                            <span>Çıkış Mesajları</span>
+                            <input type="checkbox" name="leave_enabled" {% if config.welcome.leave_enabled %}checked{%
+                                endif %}>
+                        </div>
+                        <div class="control-field">
+                            <label class="label-premium">Üye Hedefi</label>
+                            <input type="number" name="member_target" class="input-cyber"
+                                value="{{ config.welcome.member_target or '100' }}">
+                        </div>
+                    </div>
+
+                    <div class="settings-grid" style="margin-top: 2rem;">
+                        <div class="control-field">
+                            <label class="label-premium">Hoşgeldin Kanalı</label>
+                            <input type="text" name="channel_id" class="input-cyber"
+                                value="{{ config.welcome.channel_id or '' }}" placeholder="Kanal ID">
+                        </div>
+                        <div class="control-field">
+                            <label class="label-premium">Kurallar Kanalı</label>
+                            <input type="text" name="rules_channel_id" class="input-cyber"
+                                value="{{ config.welcome.rules_channel_id or '' }}" placeholder="Kanal ID">
+                        </div>
+                    </div>
+
+                    <div class="settings-grid" style="margin-top: 2rem;">
+                        <div class="control-field">
+                            <label class="label-premium">Giriş Mesajı Şablonu</label>
+                            <textarea name="message" class="input-cyber"
+                                style="min-height: 100px;">{{ config.welcome.message or "" }}</textarea>
+                        </div>
+                        <div class="control-field">
+                            <label class="label-premium">Çıkış Mesajı Şablonu</label>
+                            <textarea name="leave_message" class="input-cyber"
+                                style="min-height: 100px;">{{ config.welcome.leave_message or "" }}</textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-secondary"
+                        style="margin-top: 3.5rem; width: 100%; height: 55px; border-radius: 18px; background: var(--success);">
+                        <i class="fa-solid fa-check"></i> Karşılama Ayarlarını Kaydet
+                    </button>
+                </form>
+            </section>
+
+            <!-- GÜNLÜK OTOMATİK MESAJLAR -->
+            <section id="oto-mesaj" class="card">
+                <header style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-clock"
+                            style="color: var(--primary-light); margin-right: 12px;"></i> Periyodik Mesajlar</h2>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Sunucunuzda her gün otomatik "Günaydın" ve
+                        "İyi Akşamlar" mesajları gönderin.</p>
+                </header>
+
+                <form action="/dashboard/{{ guild.id }}/greeting" method="POST">
+                    <div class="settings-grid">
+                        <div class="control-field">
+                            <label class="label-premium">Sistem Durumu</label>
+                            <div class="switch-card" onclick="this.querySelector('input').click()">
+                                <span>Günlük Selamlar</span>
+                                <input type="checkbox" name="enabled" {% if config.greeting.enabled %}checked{% endif
+                                    %}>
+                            </div>
+                        </div>
+                        <div class="control-field">
+                            <label class="label-premium">Mesaj Kanalı</label>
+                            <input type="text" name="channel_id" class="input-cyber"
+                                value="{{ config.greeting.channel_id or '' }}" placeholder="Kanal ID">
+                        </div>
+                    </div>
+
+                    <div class="settings-grid" style="margin-top: 2rem;">
+                        <div class="card" style="background: rgba(255, 255, 255, 0.02); padding: 1.5rem;">
+                            <label class="label-premium"><i class="fa-solid fa-sun" style="color: #ffde03;"></i> Sabah
+                                Mesajı Saati</label>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <input type="number" name="morning_hour" class="input-cyber"
+                                    value="{{ config.greeting.morning_hour or 10 }}" min="0" max="23">
+                                <span>:</span>
+                                <input type="number" name="morning_minute" class="input-cyber"
+                                    value="{{ config.greeting.morning_minute or 0 }}" min="0" max="59">
+                            </div>
+                        </div>
+
+                        <div class="card" style="background: rgba(255, 255, 255, 0.02); padding: 1.5rem;">
+                            <label class="label-premium"><i class="fa-solid fa-moon" style="color: #9d4edd;"></i> Akşam
+                                Mesajı Saati</label>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <input type="number" name="evening_hour" class="input-cyber"
+                                    value="{{ config.greeting.evening_hour or 22 }}" min="0" max="23">
+                                <span>:</span>
+                                <input type="number" name="evening_minute" class="input-cyber"
+                                    value="{{ config.greeting.evening_minute or 0 }}" min="0" max="59">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary"
+                        style="margin-top: 3.5rem; width: 100%; height: 55px; border-radius: 18px;">
+                        <i class="fa-solid fa-save"></i> Zamanlama Ayarlarını Uygula
+                    </button>
+                </form>
+            </section>
+
+            <!-- OTOMATİK ROL VE PANEL YÖNETİMİ -->
+            <div class="settings-grid">
+                <!-- OTOMATİK ROL -->
+                <section id="auto-role" class="card">
+                    <header style="margin-bottom: 2rem;">
+                        <h2 style="font-size: 1.4rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-user-tag"
+                                style="color: var(--secondary); margin-right: 12px;"></i> Otomatik Rol</h2>
+                    </header>
+                    <form action="/dashboard/{{ guild.id }}/autorole" method="POST">
+                        <div class="control-field" style="margin-bottom: 1.5rem;">
+                            <div class="switch-card" onclick="this.querySelector('input').click()">
+                                <span>Sistem Durumu</span>
+                                <input type="checkbox" name="enabled" {% if config.auto_role.enabled %}checked{% endif
+                                    %}>
+                            </div>
+                        </div>
+                        <div class="control-field">
+                            <label class="label-premium">Verilecek Rol ID</label>
+                            <input type="text" name="role_id" class="input-cyber"
+                                value="{{ config.auto_role.role_id or '' }}" placeholder="Rol ID">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="margin-top: 2rem; width: 100%;">Ayarları
+                            Güncelle</button>
+                    </form>
+                </section>
+
+                <!-- PANEL YÖNETİMİ / OTOMATİK (Gizlendi) -->
+                <!-- 
+                <section id="ozellik-kanali" class="card" style="border: 1px solid rgba(255, 215, 0, 0.2);">
+                    <header style="margin-bottom: 2rem;">
+                        <h2 style="font-size: 1.4rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-wand-magic-sparkles"
+                                style="color: #ffde03; margin-right: 12px;"></i> Panel Yönetimi</h2>
+                    </header>
+                    <form action="/dashboard/{{ guild.id }}/feature" method="POST">
+                        <div class="control-field" style="margin-bottom: 1.5rem;">
+                            <div class="switch-card" onclick="this.querySelector('input').click()">
+                                <span>Bilgi Paneli</span>
+                                <input type="checkbox" name="enabled" {% if config.feature_channel.enabled %}checked{%
+                                    endif %}>
+                            </div>
+                        </div>
+                        <div class="control-field">
+                            <label class="label-premium">Panel Kanalı ID</label>
+                            <input type="text" name="channel_id" class="input-cyber"
+                                value="{{ config.feature_channel.channel_id or '' }}" placeholder="Kanal ID">
+                        </div>
+                        <button type="submit" class="btn btn-primary"
+                            style="margin-top: 2rem; width: 100%; background: linear-gradient(135deg, #ffde03, #ff9f1c); color: #000;">Paneli
+                            Aktifleştir</button>
+                    </form>
+                </section>
+                -->
+            </div>
+
+            <!-- SOSYAL MEDYA RADARI -->
+            <section id="sosyal" class="card">
+                <header style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-tower-broadcast"
+                            style="color: var(--warning); margin-right: 12px;"></i> Sosyal Medya Radarı</h2>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">YouTube, Kick ve TikTok kanallarını takip
+                        ederek sunucunuza bildirim gönderin.</p>
+                </header>
+
+                <div class="settings-grid">
+                    <div class="card" style="background: rgba(0,0,0,0.2); border-color: rgba(255,255,255,0.05);">
+                        <form action="/dashboard/{{ guild.id }}/social" method="POST">
+                            <div class="control-field">
+                                <label class="label-premium">Bildirim Kanalı</label>
+                                <div style="display: flex; gap: 12px;">
+                                    <input type="text" name="notification_channel" class="input-cyber"
+                                        value="{{ config.social.notification_channel or '' }}" placeholder="Kanal ID">
+                                    <button type="submit" class="btn btn-primary" style="width: 60px;"><i
+                                            class="fa-solid fa-save"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    {% for platform in ['youtube', 'kick', 'tiktok'] %}
+                    <div class="card" style="padding: 2rem; background: rgba(0,0,0,0.1);">
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 1.5rem;">
+                            {% if platform == 'youtube' %}<i class="fa-brands fa-youtube"
+                                style="color: #ff0000; font-size: 2rem;"></i>
+                            {% elif platform == 'kick' %}<i class="fa-solid fa-bolt"
+                                style="color: #53fc18; font-size: 1.8rem;"></i>
+                            {% else %}<i class="fa-brands fa-tiktok" style="font-size: 1.8rem;"></i>{% endif %}
+                            <h3 style="text-transform: capitalize;">{{ platform }}</h3>
+                        </div>
+
+                        <div class="account-chips"
+                            style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1.5rem;">
+                            {% for account in config.social[platform] %}
+                            <div class="chip">
+                                <span>{{ account.name }}</span>
+                                <form action="/dashboard/{{ guild.id }}/social/remove" method="POST"
+                                    style="display: inline;">
+                                    <input type="hidden" name="platform" value="{{ platform }}">
+                                    <input type="hidden" name="account_id" value="{{ account.id }}">
+                                    <button type="submit" class="chip-delete"><i class="fa-solid fa-xmark"></i></button>
+                                </form>
+                            </div>
+                            {% else %}
+                            <div style="color: var(--text-dim); font-size: 0.8rem;">Henüz hesap eklenmemiş.</div>
+                            {% endfor %}
+                        </div>
+
+                        <form action="/dashboard/{{ guild.id }}/social/add" method="POST"
+                            style="display: flex; gap: 8px;">
+                            <input type="hidden" name="platform" value="{{ platform }}">
+                            <input type="text" name="identifier" class="input-cyber"
+                                style="padding: 0.6rem 1rem; font-size: 0.85rem;" placeholder="Kanal URL/ID" required>
+                            <button type="submit" class="btn btn-primary" style="padding: 0 1.2rem;"><i
+                                    class="fa-solid fa-plus"></i></button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- KOMUT LİSTESİ VE REHBER -->
+            <section id="komutlar" class="card">
+                <header style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-terminal"
+                            style="color: var(--primary-light); margin-right: 12px;"></i> Sistem Komutları</h2>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Botun tüm yeteneklerini ve kullanım
+                        terminal komutlarını buradan inceleyin.</p>
+                </header>
+
+                <div class="settings-grid">
+                    <!-- Üye Komutları -->
+                    <div class="card"
+                        style="background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.1); padding: 1.5rem;">
+                        <h3 style="color: var(--success); margin-bottom: 1.5rem; font-size: 1.1rem;"><i
+                                class="fa-solid fa-users"></i> Üye Komutları</h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem;">
+                            <div style="display: flex; justify-content: space-between;"><code>!avatar</code>
+                                <span>Profil Resmi</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;"><code>!user @üye</code>
+                                <span>Kullanıcı Bilgisi</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;"><code>!server</code>
+                                <span>Sunucu Bilgisi</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;"><code>!afk [sebep]</code>
+                                <span>AFK Modu</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;"><code>!ping</code> <span>Gecikme
+                                    Ölçer</span></div>
+                            <div style="display: flex; justify-content: space-between;"><code>!stats</code> <span>Bot
+                                    Verileri</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Moderatör Komutları -->
+                    <div class="card"
+                        style="background: rgba(0, 212, 255, 0.05); border-color: rgba(0, 212, 255, 0.1); padding: 1.5rem;">
+                        <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.1rem;"><i
+                                class="fa-solid fa-gavel"></i> Moderasyon</h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem;">
+                            <div style="display: flex; justify-content: space-between;"><code>!kick @üye</code>
+                                <span>Sunucudan At</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;"><code>!ban @üye</code>
+                                <span>Sunucudan Yasakla</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;"><code>!unban [ID]</code>
+                                <span>Yasak Kaldır</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;"><code>!clear [sayı]</code>
+                                <span>Mesaj Temizle</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;"><code>!ds [mesaj]</code>
+                                <span>Destek Talebi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sahip Komutları -->
+                    <div class="card"
+                        style="background: rgba(157, 78, 221, 0.05); border-color: rgba(157, 78, 221, 0.1); padding: 1.5rem;">
+                        <h3 style="color: var(--primary-light); margin-bottom: 1.5rem; font-size: 1.1rem;"><i
+                                class="fa-solid fa-crown"></i> Sunucu Sahibi</h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem;">
+                            <div
+                                style="display: flex; justify-content: space-between; color: #ffde03; font-weight: 800;">
+                                <code>!siciltemizle @üye</code> <span>Tüm Sicili Sıfırla</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;"><code>!panel</code> <span>Web
+                                    Kontrol Paneli</span></div>
+                            <div style="display: flex; justify-content: space-between;"><code>!nuke</code> <span>Kanalı
+                                    Sıfırla</span></div>
+                            <div style="display: flex; justify-content: space-between;"><code>!mod setup</code>
+                                <span>Koruma Kurulumu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card"
+                    style="margin-top: 2rem; background: rgba(255, 255, 255, 0.02); border-style: dashed; padding: 1.5rem;">
+                    <h4
+                        style="font-size: 0.9rem; margin-bottom: 1rem; color: var(--primary-light); text-transform: uppercase; letter-spacing: 1px;">
+                        Önemli Bilgilendirme</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+                        Tüm moderasyon eylemleri otomatik olarak sistem loguna kaydedilir. <code
+                            style="color: #ffde03;">!siciltemizle</code> komutu sadece sunucu sahibi tarafından
+                        kullanılabilir ve bir üyenin bot veri tabanındaki tüm uyarı geçmişini kalıcı olarak siler.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+</div>
+
+<script>
+    // --- Dashboard Tab System (High-Performance SPA Logic) ---
+    const navItems = document.querySelectorAll('.sidebar-item');
+    const sections = document.querySelectorAll('section');
+
+    function switchTab(tabId) {
+        // Clean ID (remove # if exists)
+        const targetId = tabId.replace('#', '');
+
+        // 1. Update Sidebar UI
+        navItems.forEach(item => {
+            const itemHref = item.getAttribute('href').replace('#', '');
+            if (itemHref === targetId) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+
+        // 2. Toggle Section Visibility
+        sections.forEach(section => {
+            if (section.id === targetId) {
+                section.style.display = 'block';
+                // Trigger animation reset if needed
+                section.classList.remove('animate-fade-in');
+                void section.offsetWidth; // Force reflow
+                section.classList.add('animate-fade-in');
+            } else {
+                section.style.display = 'none';
+            }
+        });
+
+        // 3. Update URL without jumping
+        history.pushState(null, null, `#${targetId}`);
+    }
+
+    // Event Listeners
+    navItems.forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                switchTab(href);
+            }
+        });
+    });
+
+    // Handle initial load (Deep Linking)
+    window.addEventListener('load', () => {
+        const hash = window.location.hash || '#moderasyon';
+        switchTab(hash);
+    });
+
+    // Handle back/forward buttons
+    window.addEventListener('popstate', () => {
+        const hash = window.location.hash || '#moderasyon';
+        switchTab(hash);
+    });
+</script>
+
+<style>
+    /* Tab System Base States */
+    section {
+        display: none;
+        /* Hide all by default */
+        animation-duration: 0.6s;
+    }
+
+    /* Active State for Initial Load */
+    #moderasyon {
+        display: block;
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Dashboard Özel Ek CSS */
+    .status-badge {
+        padding: 0.5rem 1rem;
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--success);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+
+    /* Chip & Social Styles */
+    .chip {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--glass-border);
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: var(--transition-smooth);
+    }
+
+    .chip:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--primary);
+    }
+
+    .chip-delete {
+        background: none;
+        border: none;
+        color: var(--danger);
+        cursor: pointer;
+        opacity: 0.5;
+        transition: 0.2s;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .chip-delete:hover {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+</style>
+{% endblock %}
